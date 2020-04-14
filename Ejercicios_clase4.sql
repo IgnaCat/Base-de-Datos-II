@@ -4,7 +4,7 @@ select title, special_features
   where rating = 'PG-13';
   
 #2
-select title, `length` 
+select DISTINCT title, `length` 
  from film;
  
 #3
@@ -36,7 +36,10 @@ select address, city, country
      and s.store_id = 1;
     
 
- #falta el 7   
+ #7  creo q esta mal xd
+ select CONCAT(title, ' ', rating) as pairFilms
+  from film
+   order by rating;
     
 
 #8
