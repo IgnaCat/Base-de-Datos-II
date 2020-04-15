@@ -36,9 +36,13 @@ select address, city, country
      and s.store_id = 1;
     
 
- #7  creo q esta mal xd
- select CONCAT(title, ' ', rating) as pairFilms
-  from film
+ #7 
+ select title, rating
+  from film f1
+  where rating in (select rating 
+  				from film f2
+  				where f1.rating = f2.rating 
+  				and f1.film_id <> f2.rating)
    order by rating;
     
 
