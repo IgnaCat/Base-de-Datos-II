@@ -27,19 +27,36 @@ select c2.name,
 	(select avg(f2.length) from film f2 where f2.film_id in 
 		(select fc.film_id from film_category fc where fc.category_id = c2.category_id)) as promedio
 from category c2
-group by c2.category_id 
+group by c2.category_id
+having promedio > (select avg(length) from film)
 order by promedio desc;
 
 
 -- Ex 5
--- Esta mal xd
-select f.rating,
-	(select sum(p.amount) from payment p where p.rental_id in
-		(select r.rental_id from rental r where r.inventory_id in 
-			(select i.inventory_id from inventory i where i.film_id = f.film_id))) as sales
-from film f
+select f.rating, sum(p.amount) as sales
+from film f, payment p, rental r, inventory i
+where f.film_id = i.film_id and i.inventory_id = r.inventory_id and r.rental_id = p.rental_id 
 group by f.rating
-order by sales;
+order by sales, f.rating;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
