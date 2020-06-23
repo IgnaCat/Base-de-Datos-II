@@ -15,7 +15,7 @@ where r.inventory_id is null;
 
 
 #Ex 6
-select c.first_name, c.last_name, s.store_id, f.title
+select c.first_name, c.last_name, s.store_id, f.title, r.rental_date, r.return_date
 from film f
 inner join inventory i using (film_id)
 inner join rental r using (inventory_id)
