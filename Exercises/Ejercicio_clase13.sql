@@ -43,8 +43,15 @@ where co.country = "United States"),
 
 #Ex 2
 INSERT INTO sakila.rental
-(rental_date, inventory_id, customer_id, return_date, staff_id, last_update)
-VALUES('', 0, 0, '', 0, CURRENT_TIMESTAMP);
+(rental_date, inventory_id, customer_id, staff_id, last_update)
+VALUES(CURRENT_TIMESTAMP, 
+(select MAX(inventory_id) from inventory
+inner join film using (film_id)
+where film.title = "AGENT TRUMAN"),
+1, 
+(select staff_id from staff 
+inner join store using (store_id)
+where store.store_id = 2), CURRENT_TIMESTAMP);
 
 
 #Ex 3
@@ -54,12 +61,18 @@ WHERE rating = "G";
 
 
 #Ex 4
-select * from film f 
-inner join inventory i using(film_id)
+set @inv_id = (
+select i.inventory_id from inventory i
+inner join film f using(film_id)
 inner join rental r using(inventory_id)
 where r.return_date is null
 order by r.rental_date desc
-limit 1;
+limit 1);
+
+UPDATE sakila.rental 
+SET return_date = CURRENT_TIMESTAMP
+WHERE inventory_id = @inv_id;
+
 
 #Ex 5
 DELETE FROM film WHERE title = "AGENT TRUMAN";
@@ -69,21 +82,29 @@ DELETE FROM film WHERE title = "AGENT TRUMAN";
 
 DELETE FROM film_actor 
 WHERE film_id IN(
-	select film_id from film_id 
+	select film_id from film 
 	WHERE title = "AGENT TRUMAN");
 				
 DELETE FROM film_category 
 WHERE film_id IN(
-	select film_id from film_id 
+	select film_id from film 
 	WHERE title = "AGENT TRUMAN");
+
+DELETE FROM rental
+WHERE inventory_id IN(
+	SELECT inventory_id FROM inventory 
+	INNER JOIN film USING (film_id)
+	WHERE film.title = "AGENT TRUMAN");
 
 DELETE FROM inventory 
 WHERE film_id IN(
-	select film_id from film_id 
+	select film_id from film 
 	WHERE title = "AGENT TRUMAN");
 
 DELETE FROM film 
 WHERE title = "AGENT TRUMAN";
+
+
 
 
 
