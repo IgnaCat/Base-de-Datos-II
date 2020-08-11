@@ -23,11 +23,11 @@ inner join language l using (language_id);
 
 
 #Ex 3
-select f.title, f.release_year, UPPER(CONCAT_WS(' ', ac.first_name, ac.last_name))
+select f.title, f.release_year, CONCAT_WS(' ', ac.first_name, ac.last_name) as name
 from film f
 inner join film_actor using (film_id)
-inner join actor ac using (actor_id);
-
+inner join actor ac using (actor_id)
+where CONCAT_WS(' ', ac.first_name, ac.last_name) = TRIM('PENELOPE GUINESS');
 
 #Ex 4
 select f.title, CONCAT_WS(' ', cu.first_name, cu.last_name),
