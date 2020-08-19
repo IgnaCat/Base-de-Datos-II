@@ -25,7 +25,7 @@ UPDATE employees SET employeeNumber = employeeNumber + 20;
 #Add a age column to the table employee where and it can only accept values from 16 up to 70 years old.
 ALTER TABLE employees 
 	ADD `age` int NOT NULL CHECK (`age` BETWEEN 16 AND 70 );
-
+#(salta error)
 
 #Ex 4
 #Describe the referential integrity between tables film, actor and film_actor in sakila db.
@@ -67,7 +67,30 @@ DELIMITER ;
 
 #Ex 6
 #Find all the triggers in sakila db related to loading film_text table. What do they do? Explain each of them using its source code for the explanation.
+# Film_text usa indices para hacer una busqueda mas rapida de los films, pero algunos procesos de insercion son mas lentos.
 
 
+CREATE DEFINER=`user`@`%` TRIGGER `ins_film` AFTER INSERT ON `film` FOR EACH ROW BEGIN
+    INSERT INTO film_text (film_id, title, description)
+        VALUES (new.film_id, new.title, new.description);
+ END
+ # Dice q luego de hacer un insert en la tabla film, hace un loop y me duplica esos datos en film_text.
 
+CREATE DEFINER=`user`@`%` TRIGGER `upd_film` AFTER UPDATE ON `film` FOR EACH ROW BEGIN
+   IF (old.title != new.title) OR (old.description != new.description) OR (old.film_id != new.film_id)
+   THEN
+       UPDATE film_text
+           SET title=new.title,
+               description=new.description,
+               film_id=new.film_id
+       WHERE film_id=old.film_id;
+   END IF;
+ END
+ # Luego de hacer un update en film, hace un if para verificar q se hayan hecho cambios y actualiza estos en film_text.
+  
+ CREATE DEFINER=`user`@`%` TRIGGER `del_film` AFTER DELETE ON `film` FOR EACH ROW BEGIN
+   DELETE FROM film_text WHERE film_id = old.film_id;
+ END
+# Luego de hacer un delete en film, se borra de film_text los films donde 
+# el film_id sea igual al film_id de la row q queres borrar.
 
