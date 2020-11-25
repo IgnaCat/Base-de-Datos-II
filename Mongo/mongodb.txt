@@ -17,23 +17,232 @@ C:\Users\usuario>docker exec -it mongo sh
 
 #Ex 1
 db.films.find({"Rating":"PG-13"}, {"Title":1, "Special Features":1})
+{ "_id" : 7, "Special Features" : "Trailers,Deleted Scenes", "Title" : "AIRPLANE SIERRA" }
+{ "_id" : 9, "Special Features" : "Trailers,Deleted Scenes", "Title" : "ALABAMA DEVIL" }
+{ "_id" : 18, "Special Features" : "Trailers,Behind the Scenes", "Title" : "ALTER VICTORY" }
+{ "_id" : 28, "Special Features" : "Deleted Scenes,Behind the Scenes", "Title" : "ANTHEM LUKE" }
+{ "_id" : 33, "Special Features" : "Trailers,Commentaries,Deleted Scenes,Behind the Scenes", "Title" : "APOLLO TEEN" }
+{ "_id" : 35, "Special Features" : "Trailers,Deleted Scenes,Behind the Scenes", "Title" : "ARACHNOPHOBIA ROLLERCOASTER" }
+{ "_id" : 36, "Special Features" : "Trailers,Commentaries", "Title" : "ARGONAUTS TOWN" }
+{ "_id" : 44, "Special Features" : "Trailers,Behind the Scenes", "Title" : "ATTACKS HATE" }
+{ "_id" : 45, "Special Features" : "Trailers,Behind the Scenes", "Title" : "ATTRACTION NEWTON" }
+{ "_id" : 48, "Special Features" : "Trailers,Behind the Scenes", "Title" : "BACKLASH UNDEFEATED" }
+{ "_id" : 57, "Special Features" : "Deleted Scenes", "Title" : "BASIC EASY" }
+{ "_id" : 64, "Special Features" : "Commentaries,Behind the Scenes", "Title" : "BEETHOVEN EXORCIST" }
+{ "_id" : 67, "Special Features" : "Deleted Scenes", "Title" : "BERETS AGENT" }
+{ "_id" : 71, "Special Features" : "Commentaries,Deleted Scenes,Behind the Scenes", "Title" : "BILKO ANONYMOUS" }
+{ "_id" : 73, "Special Features" : "Trailers,Commentaries", "Title" : "BINGO TALENTED" }
+{ "_id" : 79, "Special Features" : "Trailers,Behind the Scenes", "Title" : "BLADE POLISH" }
+{ "_id" : 81, "Special Features" : "Trailers,Behind the Scenes", "Title" : "BLINDNESS GUN" }
+{ "_id" : 94, "Special Features" : "Trailers,Deleted Scenes", "Title" : "BRAVEHEART HUMAN" }
+{ "_id" : 96, "Special Features" : "Trailers,Commentaries", "Title" : "BREAKING HOME" }
+{ "_id" : 98, "Special Features" : "Trailers", "Title" : "BRIGHT ENCOUNTERS" }
+Type "it" for more
 
 #Ex 2
 db.films.distinct("Length")
+[
+        48,
+        50,
+        54,
+        62,
+        63,
+        86,
+        114,
+        117,
+        126,
+        130,
+        169,
+        "100",
+        "101",
+        "102",
+        "103",
+        "104",
+        "105",
+        "106",
+        "107",
+        "108",
+        "109",
+        "110",
+        "111",
+        "112",
+        "113",
+        "114",
+        "115",
+        "116",
+        "117",
+        "118",
+        "119",
+        "120",
+        "121",
+        "122",
+        "123",
+        "124",
+        "125",
+        "126",
+        "127",
+        "128",
+        "129",
+        "130",
+        "131",
+        "132",
+        "133",
+        "134",
+        "135",
+        "136",
+        "137",
+        "138",
+        "139",
+        "140",
+        "141",
+        "142",
+        "143",
+        "144",
+        "145",
+        "146",
+        "147",
+        "148",
+        "149",
+        "150",
+        "151",
+        "152",
+        "153",
+        "154",
+        "155",
+        "156",
+        "157",
+        "158",
+        "159",
+        "160",
+        "161",
+        "162",
+        "163",
+        "164",
+        "165",
+        "166",
+        "167",
+        "168",
+        "169",
+        "170",
+        "171",
+        "172",
+        "173",
+        "174",
+        "175",
+        "176",
+        "177",
+        "178",
+        "179",
+        "180",
+        "181",
+        "182",
+        "183",
+        "184",
+        "185",
+        "46",
+        "47",
+        "48",
+        "49",
+        "50",
+        "51",
+        "52",
+        "53",
+        "54",
+        "55",
+        "56",
+        "57",
+        "58",
+        "59",
+        "60",
+        "61",
+        "62",
+        "63",
+        "64",
+        "65",
+        "66",
+        "67",
+        "68",
+        "69",
+        "70",
+        "71",
+        "72",
+        "73",
+        "74",
+        "75",
+        "76",
+        "77",
+        "78",
+        "79",
+        "80",
+        "81",
+        "82",
+        "83",
+        "84",
+        "85",
+        "86",
+        "87",
+        "88",
+        "89",
+        "90",
+        "91",
+        "92",
+        "93",
+        "94",
+        "95",
+        "96",
+        "97",
+        "98",
+        "99"
+]
 
 #Ex 3
 db.films.find({"Replacement Cost":{$gte:20.00,$lte:24.00}}, {"Title":1, "Rental Duration":1, "Replacement Cost":1})
+{ "_id" : 1, "Rental Duration" : 6, "Title" : "ACADEMY DINOSAUR" }
+{ "_id" : 5, "Rental Duration" : 6, "Title" : "AFRICAN EGG" }
+{ "_id" : 9, "Rental Duration" : 3, "Title" : "ALABAMA DEVIL" }
 
 #Ex 4
 db.films.find({"Special Features":"Behind the Scenes"}, {"Title":1, "Category":1, "Rating":1})
+{ "_id" : 43, "Category" : "Family", "Rating" : "G", "Title" : "ATLANTIS CAUSE" }
+{ "_id" : 55, "Category" : "Sci-Fi", "Rating" : "G", "Title" : "BARBARELLA STREETCAR" }
+{ "_id" : 87, "Category" : "Travel", "Rating" : "NC-17", "Title" : "BOONDOCK BALLROOM" }
+{ "_id" : 91, "Category" : "Classics", "Rating" : "PG", "Title" : "BOUND CHEAPER" }
+{ "_id" : 101, "Category" : "Documentary", "Rating" : "R", "Title" : "BROTHERHOOD BLANKET" }
+{ "_id" : 107, "Category" : "Drama", "Rating" : "G", "Title" : "BUNCH MINDS" }
+{ "_id" : 109, "Category" : "New", "Rating" : "G", "Title" : "BUTTERFLY CHOCOLAT" }
+{ "_id" : 115, "Category" : "Action", "Rating" : "R", "Title" : "CAMPUS REMEMBER" }
+{ "_id" : 136, "Category" : "New", "Rating" : "NC-17", "Title" : "CHAPLIN LICENSE" }
+{ "_id" : 150, "Category" : "Documentary", "Rating" : "PG", "Title" : "CIDER DESIRE" }
+{ "_id" : 158, "Category" : "Music", "Rating" : "R", "Title" : "CLONES PINOCCHIO" }
+{ "_id" : 170, "Category" : "Foreign", "Rating" : "PG-13", "Title" : "COMMAND DARLING" }
+{ "_id" : 173, "Category" : "Drama", "Rating" : "PG-13", "Title" : "CONFESSIONS MAGUIRE" }
+{ "_id" : 199, "Category" : "Documentary", "Rating" : "R", "Title" : "CUPBOARD SINNERS" }
+{ "_id" : 259, "Category" : "Animation", "Rating" : "NC-17", "Title" : "DUCK RACER" }
+{ "_id" : 262, "Category" : "Family", "Rating" : "NC-17", "Title" : "DUMBO LUST" }
+{ "_id" : 265, "Category" : "Comedy", "Rating" : "PG", "Title" : "DYING MAKER" }
+{ "_id" : 269, "Category" : "Family", "Rating" : "R", "Title" : "EARRING INSTINCT" }
+{ "_id" : 277, "Category" : "Horror", "Rating" : "PG-13", "Title" : "ELEPHANT TROJAN" }
+{ "_id" : 291, "Category" : "Sports", "Rating" : "PG-13", "Title" : "EVOLUTION ALTER" }
+Type "it" for more
 
 #Ex 5
 db.films.find({"Title":"ZOOLANDER FICTION"},{"Actors.First name":1, "Actors.Last name":1})
+{ "_id" : 999, "Actors" : [ { "First name" : "CARMEN", "Last name" : "HUNT" }, 
+{ "First name" : "MARY", "Last name" : "TANDY" },
+{ "First name" : "PENELOPE", "Last name" : "CRONYN" }, 
+{ "First name" : "WHOOPI", "Last name" : "HURT" }, 
+{ "First name" : "JADA", "Last name" : "RYDER" } ] }
 
 #Ex 6
 db.stores.find({"_id": 1}, {"Address":1, "City":1, "Country":1})
+{ "_id" : 1, "Address" : "47 MySakila Drive", "City" : "Lethbridge", "Country" : "Canada" }
 
-#Ex 7 y 8
+#Ex 7
+> db.films.aggregate([ {$group: {_id: "$Rating", films: {$push: "$Title"}}}])
+{ "_id" : "R", "films" : [ "AIRPORT POLLOCK", "ALONE TRIP", "AMELIE HELLFIGHTERS", "AMERICAN CIRCUS", "ANACONDA CONFESSIONS", "ANALYZE HOOSIERS", "ANYTHING SAVANNAH", "APOCALYPSE FLAMINGOS", "ARMY FLINTSTONES", "BADMAN DAWN", "BANGER PINOCCHIO", "BEAR GRACELAND", "BEAST HUNCHBACK", "BEVERLY OUTLAW", "BOOGIE AMELIE", "BOULEVARD MOB", "BROOKLYN DESERT", "BROTHERHOOD BLANKET", "BUBBLE GROSSE", "CAMPUS REMEMBER", "CANDIDATE PERDITION", "CANYON STOCK", "CAUSE DATE", "CHANCE RESURRECTION", "CHARIOTS CONSPIRACY", "CHOCOLATE DUCK", "CLONES PINOCCHIO", "CLOSER BANG", "CLUELESS BUCKET", "COMANCHEROS ENEMY", "COMMANDMENTS EXPRESS", "CONNECTICUT TRAMP", "CONVERSATION DOWNHILL", "CROSSING DIVORCE", "CROWDS TELEMARK", "CRUSADE HONEY", "CUPBOARD SINNERS", "DATE SPEED", "DELIVERANCE MULHOLLAND", "DESERT POSEIDON", "DETAILS PACKER", "DEVIL DESIRE", "DINOSAUR SECRETARY", "DISTURBING SCARFACE", "DIVINE RESURRECTION", "DOOM DANCING", "DOUBLE WRATH", "DOUBTFIRE LABYRINTH", "DROP WATERFRONT", "DURHAM PANKY", "EARRING INSTINCT", "ENTRAPMENT SATISFACTION", "ESCAPE METROPOLIS", "EXPRESS LONELY", "FAMILY SWEET", "FEUD FROGMEN", "FEVER EMPIRE", "FIDDLER LOST", "FIGHT JAWBREAKER", "FINDING ANACONDA", "FIRE WOLVES", "FISH OPUS", "FLIGHT LIES", "FORREST SONS", "FREAKY POCUS", "FRIDA SLIPPER", "FROGMEN BREAKING", "FUGITIVE MAGUIRE", "GALAXY SWEETHEARTS", "GHOSTBUSTERS ELF", "GIANT TROOPERS", "GILMORE BOILED", "GO PURPLE", "GOLD RIVER", "GOLDMINE TYCOON", "GONE TROUBLE", "GORGEOUS BINGO", "GRACELAND DYNAMITE", "GREEDY ROOTS", "GRINCH MASSAGE", "GROSSE WONDERFUL", "GUYS FALCON", "HAMLET WISDOM", "HANDICAP BOONDOCK", "HARDLY ROBBERS", "HAUNTING PIANIST", "HEAD STRANGER", "HIGH ENCINO", "HIGHBALL POTTER", "HOLOCAUST HIGHBALL", "HOLY TADPOLE", "HOME PITY", "HOMEWARD CIDER", "HONEY TIES", "HORROR REIGN", "HOUSE DYNAMITE", "ICE CROSSING", "ILLUSION AMELIE", "INTERVIEW LIAISONS", "ISHTAR ROCKETEER", "JEEPERS WEDDING", "JEOPARDY ENCINO", "JET NEIGHBORS", "KANE EXORCIST", "KILLER INNOCENT", "KISSING DOLLS", "KRAMER CHOCOLATE", "LIGHTS DEER", "LOATHING LEGALLY", "LOCK REAR", "LOSE INCH", "LOVE SUICIDES", "MADIGAN DORADO", "MADISON TRAP", "MAGNIFICENT CHITTY", "MASSACRE USUAL", "MAUDE MOD", "MOTHER OLEANDER", "MUSIC BOONDOCK", "NEIGHBORS CHARADE", "OPUS ICE", "ORIENT CLOSER", "OZ LIAISONS", "PAJAMA JAWBREAKER", "PLUTO OLEANDER", "PRIX UNDEFEATED", "PURPLE MOVIE", "QUEST MUSSOLINI", "QUILLS BULL", "RAGE GAMES", "RAGING AIRPLANE", "REMEMBER DIARY", "REQUIEM TYCOON", "REUNION WITCHES", "ROAD ROXANNE", "ROBBERY BRIGHT", "ROOF CHAMPION", "ROXANNE REBEL", "RULES HUMAN", "RUN PACIFIC", "SALUTE APOLLO", "SATURN NAME", "SENSE GREEK", "SEVEN SWARM", "SHEPHERD MIDSUMMER", "SHIP WONDERLAND", "SHRUNK DIVINE", "SIEGE MADRE", "SILENCE KANE", "SLACKER LIAISONS", "SLING LUKE", "SMOOCHY CONTROL", "SOLDIERS EVOLUTION", "SOUP WISDOM", "SOUTH WAIT", "SPIRIT FLINTSTONES", "SPLENDOR PATTON", "STAGECOACH ARMAGEDDON", "STAMPEDE DISTURBING", "STORY SIDE", "STRAIGHT HOURS", "STRANGERS GRAFFITI", "STREETCAR INTENTIONS", "SUBMARINE BED", "SUIT WALLS", "SUN CONFESSIONS", "SWEET BROTHERHOOD", "TERMINATOR CLUB", "TIES HUNGER", "TIGHTS DAWN", "TITANIC BOONDOCK", "TOMORROW HUSTLER", "TOWN ARK", "TRAIN BUNCH", "TROOPERS METAL", "TUXEDO MILE", "UNFAITHFUL KILL", "UNITED PILOT", "VACATION BOONDOCK", "VANISHED GARDEN", "VELVET TERMINATOR", "VERTIGO NORTHWEST", "VIRGINIAN PLUTO", "WASH HEAVENLY", "WEEKEND PERSONAL", "WILD APOLLO", "WILLOW TRACY", "WIND PHANTOM", "WINDOW SIDE", "WISDOM WORKER", "WOMEN DORADO", "WORKER TARZAN", "WORKING MICROCOSMOS", "YENTL IDAHO", "ZOOLANDER FICTION" ] }
+#Uno de los resultados jaja
+
+# Ex 8
 ?
 
 
