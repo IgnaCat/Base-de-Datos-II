@@ -1,0 +1,133 @@
+
+# Ex 3 - Strings
+
+127.0.0.1:6379> set name ignacio
+OK
+127.0.0.1:6379> get name
+"ignacio"
+127.0.0.1:6379> del name
+(integer) 1
+
+
+# Ex 4 - Hashes
+
+127.0.0.1:6379> hmset movie name "Harry Potter" author "J.K Rowling" country "United Kingdom" movies "7"
+OK
+127.0.0.1:6379> hgetall movie
+1) "name"
+2) "Harry Potter"
+3) "author"
+4) "J.K Rowling"
+5) "country"
+6) "United Kingdom"
+7) "movies"
+8) "7"
+
+
+# Ex 5 - Lists
+
+127.0.0.1:6379> lpush months january
+(integer) 1
+127.0.0.1:6379> lpush months february
+(integer) 2
+127.0.0.1:6379> lpush months march
+(integer) 3
+127.0.0.1:6379> lpush months april
+(integer) 4
+127.0.0.1:6379> lrange months 0 5
+1) "april"
+2) "march"
+3) "february"
+4) "january"
+
+
+# Ex 6 - Sets
+
+127.0.0.1:6379> sadd databases redis
+(integer) 1
+127.0.0.1:6379> sadd databases mysql
+(integer) 1
+127.0.0.1:6379> sadd databases mongodb
+(integer) 1
+127.0.0.1:6379> sadd databases redis
+(integer) 0
+127.0.0.1:6379> smembers databases
+1) "redis"
+2) "mongodb"
+3) "mysql"
+
+
+# Ex 7 - Sorted Sets
+
+127.0.0.1:6379> zadd teams 1 talleres
+(integer) 1
+127.0.0.1:6379> zadd teams 2 boca
+(integer) 0
+127.0.0.1:6379> zadd teams 3 river
+(integer) 0
+127.0.0.1:6379> zadd teams 4 river
+(integer) 0
+127.0.0.1:6379> zrange teams 0 10 WITHSCORES
+1) "talleres"
+2) "1"
+3) "boca"
+4) "2"
+5) "river"
+6) "4"
+
+
+# Ex 8 - Publish Subscribe
+
+127.0.0.1:6379> subscribe channel1
+Reading messages... (press Ctrl-C to quit)
+1) "subscribe"
+2) "channel1"
+3) (integer) 1
+^C
+# redis-cli
+127.0.0.1:6379> publish channel1 "Hola pibardos, como andan ?"
+(integer) 0
+127.0.0.1:6379> publish channel1 "asd"
+(integer) 0
+
+127.0.0.1:6379> subscribe channel1
+Reading messages... (press Ctrl-C to quit)
+1) "subscribe"
+2) "channel1"
+3) (integer) 1
+1) "message"
+2) "channel1"
+3) "Hola pibardos, como andan ?"
+1) "message"
+2) "channel1"
+3) "asd"
+
+
+# Ex 9 - Transactions 
+
+127.0.0.1:6379> multi
+OK
+127.0.0.1:6379> set name ignacio
+QUEUED
+127.0.0.1:6379> set last_name martinez
+QUEUED
+127.0.0.1:6379> get name
+QUEUED
+127.0.0.1:6379> get last_name
+QUEUED
+127.0.0.1:6379> exec
+1) OK
+2) OK
+3) "ignacio"
+4) "martinez"
+
+
+# Ex 10 - Backup 
+
+127.0.0.1:6379> save
+OK
+127.0.0.1:6379> config get dir
+1) "dir"
+2) "/data"
+
+
